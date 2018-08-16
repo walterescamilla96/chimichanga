@@ -1,0 +1,44 @@
+<% include ./Shared/Admin_Header %>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="white-box">
+        <h3 class="box-title">
+          <i class="fa fa-folder-open"></i> Clientes</h2>
+        </h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Fecha de Compra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i in documentos){ %>
+                <hidden name="idProd" value="<%= documentos[i].id %>"></hidden>
+                <tr>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].nombre%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].apellidos%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].correo%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].fecha%>
+                  </td>
+                </tr>
+                <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% include ./Shared/Admin_Footer %>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <title>Electtro Admin</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.min.css" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="/stylesheets/admin-sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="/stylesheets/admin-jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="/stylesheets/admin-morris.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="/stylesheets/admin-chartist.min.css" rel="stylesheet">
+    <link href="/stylesheets/admin-chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- animation CSS --
+    <link href="./stylesheets/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/stylesheets/admin-style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="/stylesheets/admin-default.css" id="theme" rel="stylesheet">
+    <style>
+        .btn-edit {
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .table-fit-col {
+            white-space: nowrap;
+            min-width: 9%;
+            max-width: 14%;
+            width: 10%
+        }
+
+        .footer {
+            position: fixed !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+        }
+    </style>
+    <script>
+        function validateForm() {
+
+            var a = document.forms["formulario"]["titulo"].value;
+            if (a == "") {
+
+                alert("Ingresa un Título válido");
+                return false;
+            }
+
+            var b = document.forms["formulario"]["descripcion"].value;
+            if (b == "") {
+                alert("Ingresa una Descripción válida");
+                return false;
+            }
+
+            var c = document.forms["formulario"]["imagen"].value;
+            if (!c) {
+                alert("Selecciona una imagen");
+                return false;
+            }
+
+            var d = document.forms["formulario"]["autor"].value;
+            if (d == "") {
+                alert("Ingresa un nombre de Autor válido");
+                return false;
+            }
+
+            var e = document.forms["formulario"]["tecnologia"].value;
+            if (e == "") {
+                alert("Ingresa un tipo de Tecnología válida");
+                return false;
+            }
+
+            var f = document.forms["formulario"]["precio"].value;
+            if (f == "" || isNaN(f)) {
+                alert("Ingresa un Precio válido");
+                return false;
+            }
+
+            var h = document.forms["formulario"]["archivo"].value;
+            if (!h) {
+                alert("Selecciona un Archivo a subir");
+                return false;
+            }
+
+            var g = document.forms["formulario"]["stock"].value;
+            if (g == "" || isNaN(g)) {
+                alert("Ingresa un número de Existencia válido");
+                return false;
+            }
+
+
+
+        }
+    </script>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader" style="display: none;">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part" style="background-color:gray">
+                    <!-- Logo -->
+                    <a class="logo" href="#">
+                        <!-- Logo icon image, you can use font-icon also -->
+                        <b>
+                            <!--This is dark logo icon--
+                                <img src="http://drive.google.com/uc?export=view&id=1CDb83RAVBNMoCXZ4Dpb-tiT3-wRnT0bk" alt="home" class="dark-logo">
+                                <!--This is light logo icon-->
+                            <img src="http://drive.google.com/uc?export=view&id=15LWwuKCDxqFBlMf2iOwV1E8Eg9s71TGZ" alt="home" class="light-logo">
+                        </b>
+                        <!-- Logo text image you can use text also -->
+                        <span class="hidden-xs">
+                            <!--This is dark logo text--
+                                <img src="http://drive.google.com/uc?export=view&id=1CDb83RAVBNMoCXZ4Dpb-tiT3-wRnT0bk" alt="home" class="dark-logo img-responsive">
+                                <!--This is light logo text-->
+                            <img src="http://drive.google.com/uc?export=view&id=1CDb83RAVBNMoCXZ4Dpb-tiT3-wRnT0bk" alt="home" class="light-logo img-responsive"
+                                width="100">
+                            <!--This is light logo text-->
+                        </span>
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="in">
+                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <a href="#" class="active">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
+                        <a class="profile-pic" href="#">
+                            <img src="http://drive.google.com/uc?export=view&id=1QLy3J7_wBWth0Qa5UJWsUvwrcly2CQ1y" alt="user-img" width="36" class="img-circle">
+                            <b class="hidden-xs">Admin</b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+                <div class="sidebar-nav slimscrollsidebar" style="overflow: hidden; width: auto; height: 100%;">
+                    <div class="sidebar-head">
+                        <h3>
+                            <span class="fa-fw open-close">
+                                <i class="ti-close ti-menu"></i>
+                            </span>
+                            <span class="hide-menu">Navigation</span>
+                        </h3>
+                    </div>
+                    <ul class="nav in" id="side-menu">
+                        <li style="padding: 70px 0 0;">
+                            <a href="/panelVentas" class="waves-effect active">
+                                <i class="fa fa-line-chart fa-fw" aria-hidden="true" style="font-size:20px;"></i> Ventas</a>
+                        </li>
+                        <li>
+                            <a href="/panelClientes" class="waves-effect">
+                                <i class="fa fa-address-book fa-fw" aria-hidden="true" style="font-size:20px;"></i> Clientes</a>
+                        </li>
+                        <li>
+                            <a href="/panelProductos" class="waves-effect">
+                                <i class="fa fa-table fa-fw" aria-hidden="true" style="font-size:20px;"></i> Productos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.3); width: 6px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 658px;"></div>
+                <div class="slimScrollRail" style="width: 6px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+            </div>
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper" style="min-height: 597px;">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">
+                            <script>
+                                var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                                var dayNames = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
+                                var f = new Date();
+                                document.write('<a style="color:darkgrey !important"><i class="fa fa-calendar fa-fw" aria-hidden="true" style="font-size:20px;"></i> ' + dayNames[f.getDay()] + ", " + f.getDate() + " de " + monthNames[f.getMonth()] + " del " + f.getFullYear() + '</a>');
+                            </script>
+                        </h4>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="">
+                            <div class="col-md-4 col-xs-12">
+                                <div class="white-box">
+                                    <div class="">
+                                        <img src="/imagesProductos/<%= documentos.imagen %>" alt="Foto-NO-Disponible" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="background-color:white">
+                                    <div class="col-md-12 col-sm-4" style="padding-top: 10px;padding-bottom: 5px">
+                                        <span>
+                                            <b>Archivo :</b>
+                                        </span>
+                                        <h4>
+                                            <%= documentos.archivo %>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-xs-12">
+                                <div class="white-box">
+                                    <form action="/panelEdit/<%= documentos.ID %>/<%= documentos.imagen %>/<%= documentos.archivo %>/<%= documentos.vendidos %>"
+                                        method="post" name="formulario" enctype="multipart/form-data" class="form-horizontal form-material">
+                                        <input type="hidden" name="vendidos" value="<%= documentos.vendidos %>">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label class="">Nombre</label>
+                                                <div class="">
+                                                    <input name="titulo" id="titulo" value="<%=documentos.titulo %>" type="text" placeholder="Título" class="form-control form-control-line"> </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="">Autor</label>
+                                                <div class="">
+                                                    <input name="autor" id="autor" type="text" placeholder="Autor" class="form-control form-control-line" value="<%= documentos.autor %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="">Tecnología</label>
+                                                <div class="">
+                                                    <!--<select name="tecnologia" id="tecnologia" placeholder="Tecnología" class="form-control form-control-line" style="border-radius: 0px 5px 0px 0px ">
+                                                        <option value="">-- seleccione --</option>
+                                                        <%for(var i in tecnologia){%>
+                                                            <option value="<%- tecnologia[i].nombre%>" selected="<%= documentos.tecnologia %>">
+                                                                <%- tecnologia[i].nombre%>
+                                                            </option>
+                                                            <%}%>
+                                                    </select>-->
+                                                    <input name="tecnologia" id="tecnologia" type="text" placeholder="Tecnología" class="form-control form-control-line" value="<%= documentos.tecnologia %>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label class="">Cantidad</label>
+                                                <div class="">
+                                                    <input name="stock" id="stock" type="text" placeholder="Cantidad" class="form-control form-control-line" value="<%= documentos.existencia %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="">Precio</label>
+                                                <div class="">
+                                                    <input name="precio" id="precio" type="text" placeholder="Precio" class="form-control form-control-line" value="<%= documentos.precio %>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="border-top: 1px solid #BDBDBD;padding-top: 25px">
+                                            <div class="col-md-6">
+                                                <label class="">Archivo</label>
+                                                <div class="">
+                                                    <div class="custom-file">
+                                                        <input name="archivo" id="archivo" type="file" accept="application/pdf, application/zip" class="form-control" placeholder="*.pdf"
+                                                            lang="es" />
+                                                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="">Portada</label>
+                                                <div class="">
+                                                    <div class="custom-file">
+                                                        <input name="imagen" id="imagen" type="file" accept="image/jpeg, image/bmp, image/png" class="form-control" placeholder="*.jpg"
+                                                            lang="es" />
+                                                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="border-top: 1px solid #BDBDBD;padding-top: 25px">
+                                            <label class="col-md-12">Descripción</label>
+                                            <div class="col-md-12">
+                                                <textarea name="descripcion" id="descripcion" placeholder="Ingresa una descripción" rows="5" class="form-control form-control-line"><%= documentos.descripcion %></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-right" style="padding-top: 5%">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success" type="submit">
+                                                    <i class="fa fa-fw fa-lg fa-check-circle"></i> Guardar</button>&nbsp;&nbsp;&nbsp;
+                                                <a class="btn btn-danger" href="/panelProductos">
+                                                    <i class="fa fa-fw fa-lg fa-times-circle"></i> Cancelar</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer text-center"> 2018 © Electtro Admin </footer>
+        </div>
+    </div>
+
+    <script src="/javascripts/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="/javascripts/admin-sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="/javascripts/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="/javascripts/admin-waves.js"></script>
+    <!--Counter js -->
+    <script src="/javascripts/admin-jquery.waypoints.js"></script>
+    <script src="/javascripts/admin-jquery.counterup.min.js"></script>
+    <!-- chartist chart -->
+    <script src="/javascripts/admin-chartist.min.js"></script>
+    <script src="/javascripts/admin-chartist-plugin-tooltip.min.js"></script>
+    <!-- Sparkline chart JavaScript -->
+    <script src="/javascripts/jquery.sparkline.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/javascripts/admin-custom.min.js"></script>
+    <script src="/javascripts/admin-dashboard1.js"></script>
+</body>
+
+</html>

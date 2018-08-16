@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="es">
+    <title>
+        <%= title %>
+    </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <% include ./Shared/Heads %>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <% include ./Shared/Header %>
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
+        <% include ./Shared/Navbar %>
+            <!-- /NAVIGATION -->
+
+
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card" style="padding-top:20px">
+                                <div class="col-md-12" style="padding-bottom: 15%">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div class="alert alert-success" role="alert">
+                                            <h4 class="alert-heading">¡Bien hecho!</h4>
+                                            <p>Gracias por comprar con nosotros</p>
+                                            <hr>
+                                            <p class="mb-0">
+                                                <a href="/panelUsuario">Ir a su panel de descargas</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <% include ./Shared/Footer %>
+                <!-- /FOOTER -->
+</body>
+
+</html>

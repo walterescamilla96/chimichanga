@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="es">
+    <title>
+        <%= title %>
+    </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <% include ./Shared/Heads %>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <% include ./Shared/Header %>
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
+        <% include ./Shared/Navbar %>
+            <!-- /NAVIGATION -->
+
+
+
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="products-widget-slick row" data-nav="#slick-nav-3">
+                                <% for( var i = 0; i < documentos.length; i++) { %>
+                                    <!-- product widget -->
+                                    <div class="product col-md-3" style="height: 450px;">
+                                        <div class="product-img">
+                                            <center>
+                                                <a href="/detalleProducto/<%= documentos[i].ID %>">
+                                                    <img src="./imagesProductos/<%= documentos[i].imagen %>" alt="Foto-NO-Disponible" class="img-responsive" style="height: 200px;">
+                                                </a>
+                                            </center>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Tecnología :
+                                                <%= documentos[i].tecnologia %>
+                                            </p>
+                                            <h3 class="product-name">
+                                                <%= documentos[i].titulo %>
+                                            </h3>
+                                            <h2 class="product-price">
+                                                <%= documentos[i].existencia %>
+                                            </h2>
+                                            <h4 class="product-price">$
+                                                <%= documentos[i].precio %>
+                                            </h4>
+                                            <p class="buttons">
+                                                <a href="/detalleProducto/<%= documentos[i].ID %>" class="btn btn-default">Ver Detalles</a>
+                                                <% if ( documentos[i].existencia > 0 ) { %>
+                                                    <a href="/AgregarAlCarro/<%= documentos[i].ID %>" class="btn btn-primary">
+                                                        <i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+                                                    <% } %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- /product widget -->
+                                    <%}%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <% include ./Shared/Footer %>
+                <!-- /FOOTER -->
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<% include ./Shared/Admin_Header %>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="white-box">
+        <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+          <form class="" role="search" method="post" action="/filtrado">
+            <div class="input-group">
+              <input type="text" class="form-control" name="busqueda" id="busqueda" placeholder="Buscar">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <h3 class="box-title">
+          <i class="fa fa-folder-open"></i> Productos</h2>
+        </h3>
+        <br>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="table-fit-col">
+                  <a href="/panelCreate">
+                    <button class="btn btn-success btn-sm btn-waves">Nuevo</button>
+                  </a>
+                </th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Tecnología</th>
+                <th>Precio</th>
+                <th>Existencia</th>
+                <th>Vendidos</th>
+                <th>Descripción</th>
+                <th>Archivo</th>
+                <th>Imagen</th>
+                <!--<th></th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i in documentos){ %>
+                <hidden name="idProd" value="<%= documentos[i].ID %>"></hidden>
+                <tr>
+                  <td class="text-center row">
+                    <a href="/panelEdit/<%= documentos[i].ID %>" target="_parent">
+                      <button class="btn-edit btn-waves" type="button">
+                        <img src="http://drive.google.com/uc?export=view&id=1e9jyuz-x_EQzhO2hLc-rtdBmJWbRqJKb" class="image_response" alt="">
+                      </button>
+                    </a>
+                    <a href="/DELETE/<%= documentos[i].ID %>">
+                      <button class="btn-edit" type="button">
+                        <img src="http://drive.google.com/uc?export=view&id=1sNwtKBSgHgUcuPeLHIII4FOtUex65w33" class="image_response" alt="">
+                      </button>
+                    </a>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].titulo%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].autor%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].tecnologia%>
+                  </td>
+                  <td>
+                    <span class="text-success">$
+                      <%= documentos[i].precio%>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="text-success">
+                      <%= documentos[i].existencia%> U
+                    </span>
+                  </td>
+                  <td>
+                    <span class="text-success">
+                      <%= documentos[i].vendidos%> U
+                    </span>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].descripcion%>
+                  </td>
+                  <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                    <%= documentos[i].archivo%>
+                  </td>
+                  <td class="text-center">
+                    <img src="/imagesProductos/<%= documentos[i].imagen %>" height="100px" width="auto" class="image_response" alt="Foto-NO-Disponible"></img>
+                  </td>
+                  <!--<td class="text-center">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" id="id" name="id" value="<%%>" />
+                      <button class="btn-edit" type="submit">
+                        <img src="http://drive.google.com/uc?export=view&id=1-nmtGWMQbSSuwOk__eW9YrYD1fsNHvLE" class="image_response" alt="">
+                      </button>
+                    </form>
+                  </td>-->
+                </tr>
+                <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% include ./Shared/Admin_Footer %>

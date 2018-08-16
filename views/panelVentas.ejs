@@ -1,0 +1,94 @@
+<% include ./Shared/Admin_Header %>
+  <% 
+var monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+var dayNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]                                
+%>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12">
+        <div class="col-md-12">
+          <div class="col-md-5 col-sm-4 col-xs-6 pull-right">
+            <form class="" role="search" method="post" action="/filtradoVentas">
+              <div class="form-group">
+                <div class="col-md-3">
+                  <select name="dia" id="dia" placeholder="Día" class="form-control">
+                    <option value="">Día</option>
+                    <%for(var i in dayNames){%>
+                      <option value="<%- dayNames[i]%>">
+                        <%- dayNames[i]%>
+                      </option>
+                      <%}%>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <select name="mes" id="mes" placeholder="Mes" class="form-control">
+                    <option value="">Mes</option>
+                    <%for(var i in monthNames){%>
+                      <option value="<%- monthNames[i]%>">
+                        <%- monthNames[i]%>
+                      </option>
+                      <%}%>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="ano" id="ano" placeholder="Año">
+                </div>
+                <div class="col-md-2">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="white-box">
+          <h3 class="box-title">
+            <i class="fa fa-folder-open"></i> Ventas</h2>
+          </h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Id Cliente PayPal</th>
+                  <th>Id Pago PayPal</th>
+                  <th>Cliente</th>
+                  <th>Productos</th>
+                  <th>Fecha</th>
+                  <th>Monto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i in documentos){ %>
+                  <tr>
+                    <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                      <%= documentos[i].payerid%>
+                    </td>
+                    <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                      <%= documentos[i].paymentid%>
+                    </td>
+                    <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                      <%= documentos[i].cliente%>
+                    </td>
+                    <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                      <%= documentos[i].productos%>
+                    </td>
+                    <td class="txt-oflo" style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
+                      <%= documentos[i].fecha%>
+                    </td>
+                    <td>
+                      <span class="text-success">$
+                        <%= documentos[i].total%>
+                      </span>
+                    </td>
+                  </tr>
+                  <%}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% include ./Shared/Admin_Footer %>

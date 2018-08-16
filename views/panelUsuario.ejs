@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="es">
+    <title>
+        <%= title %>
+    </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <% include ./Shared/Heads %>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <% include ./Shared/Header %>
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
+        <% include ./Shared/Navbar %>
+            <!-- /NAVIGATION -->
+
+
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12" style="padding-bottom: 15%">
+                            <div class="col-md-3">
+                                <div class="panel panel-default sidebar-menu">
+                                    <div class="panel-heading text-center">
+                                        <h3 class="panel-title">Mi panel</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li>
+                                                <a href="/panelUsuario">
+                                                    <i class="fa fa-list"></i> Descargas</a>
+                                            </li>
+                                            <li>
+                                                <a href="/RecuperarCarro">
+                                                    <i class="fa fa-shopping-cart"></i> Carrito</a>
+                                            </li>
+                                            <li>
+                                                <a href="/logout">
+                                                    <i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9" id="customer-orders">
+                                <div class="box">
+                                    <div class="text-center">
+                                        <h2 class="title">Mis documentos</h2>
+                                    </div>
+                                    <hr>
+                                    <% if (documentos.length == 0){ %>
+                                        <p>No ha comprado ningún documento.</p>
+                                        <% }else{ %>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="3">Producto</th>
+                                                            <th>Enlace</th>
+                                                            <th>Fecha de compra</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% for (var i = 0; i < documentos.length; i++) { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="./imagesProductos/<%= documentos[i].imagen %>" height="60" width="auto" alt="Foto-NO-Disponible">
+                                                                </td>
+                                                                <td>
+                                                                    <%= documentos[i].producto %>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <a href="./archivosProductos/<%= documentos[i].archivo %>" download>
+                                                                        <%= documentos[i].archivo %>
+                                                                    </a>
+                                                                </td>
+                                                                <td>
+                                                                    <%= documentos[i].fecha %>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- FOOTER -->
+                <% include ./Shared/Footer %>
+                    <!-- /FOOTER -->
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<% include ./Shared/Admin_Header %>
+
+    <script>
+        function validateForm() {
+            var a = document.forms["formulario"]["titulo"].value;
+            if (a == "") {
+
+                alert("Ingresa un Título válido");
+                return false;
+            }
+            var b = document.forms["formulario"]["descripcion"].value;
+            if (b == "") {
+                alert("Ingresa una Descripción válida");
+                return false;
+            }
+            var c = document.forms["formulario"]["imagen"].value;
+            if (!c) {
+                alert("Selecciona una imagen");
+                return false;
+            }
+            var d = document.forms["formulario"]["autor"].value;
+            if (d == "") {
+                alert("Ingresa un nombre de Autor válido");
+                return false;
+            }
+            var e = document.forms["formulario"]["tecnologia"].value;
+            if (e == "") {
+                alert("Ingresa un tipo de Tecnología válida");
+                return false;
+            }
+            var f = document.forms["formulario"]["precio"].value;
+            if (f == "" || isNaN(f)) {
+                alert("Ingresa un Precio válido");
+                return false;
+            }
+            var h = document.forms["formulario"]["archivo"].value;
+            if (!h) {
+                alert("Selecciona un Archivo a subir");
+                return false;
+            }
+            var g = document.forms["formulario"]["stock"].value;
+            if (g == "" || isNaN(g)) {
+                alert("Ingresa un número de Existencia válido");
+                return false;
+            }
+        }
+    </script>
+
+
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box">
+                <div class="text-right" style="color:red">
+                    <span>* Campos obligatorios</span>
+                </div>
+                <form action="/panelCreate" method="post" name="formulario" enctype="multipart/form-data" onsubmit="return validateForm()"
+                    class="form-horizontal form-material container-fluid" style="border-top: 1px solid #BDBDBD;padding-top: 25px">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="col-md-12">*Nombre</label>
+                            <div class="col-md-12">
+                                <input name="titulo" id="titulo" type="text" placeholder="Nombre" class="form-control form-control-line">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="example-email" class="col-md-12">*Autor</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Autor" class="form-control form-control-line" name="autor" id="autor">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-md-12">*Tecnología</label>
+                            <div class="col-md-12">
+                                <!--<select name="tecnologia" id="tecnologia" placeholder="Tecnología" class="form-control" style="border-radius: 0px 5px 0px 0px ">
+                                    <option value="">-- seleccione --</option>
+                                    <%for(var i in tecnologia){%>
+                                    <option value="<%- tecnologia[i].nombre%>"><%- tecnologia[i].nombre%></option>
+                                    <%}%>
+                                </select>-->
+                                <input name="tecnologia" id="tecnologia" type="text" placeholder="Tecnología" class="form-control form-control-line">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="col-md-12">*Cantidad</label>
+                            <div class="col-md-12">
+                                <input name="stock" id="stock" type="text" placeholder="Cantidad" class="form-control form-control-line">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-md-12">*Precio</label>
+                            <div class="col-md-12">
+                                <input name="precio" id="precio" type="text" placeholder="Precio" class="form-control form-control-line">
+                            </div>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="form-group" style="border-top: 1px solid #BDBDBD;padding-top: 25px">
+                        <div class="col-md-6">
+                            <label class="col-sm-12">*Archivo</label>
+                            <div class="col-sm-12">
+                                <div class="custom-file">
+                                    <input name="archivo" id="archivo" type="file" accept="application/pdf, application/zip" class="form-control" placeholder="*.pdf"
+                                        lang="es" />
+                                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="col-sm-12">*Portada</label>
+                            <div class="col-sm-12">
+                                <div class="custom-file">
+                                    <input name="imagen" id="imagen" type="file" accept="image/jpeg, image/bmp, image/png" class="form-control" placeholder="*.jpg"
+                                        lang="es" />
+                                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="border-top: 1px solid #BDBDBD;padding-top: 25px">
+                        <div class="col-md-12">
+                            <label class="col-md-12">*Descripción</label>
+                            <div class="col-md-12">
+                                <textarea name="descripcion" id="descripcion" placeholder="Agrega una descripción..." rows="5" class="form-control form-control-line" style="border: 1px solid #BDBDBD"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-right" style="padding-top: 5%">
+                        <div class="col-sm-12">
+                            <a href="/panelProductos">
+                                <button class="btn btn-danger" type="button">Cancelar</button>
+                            </a>
+                            <button class="btn btn-success" type="submit">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <% include ./Shared/Admin_Footer %>
