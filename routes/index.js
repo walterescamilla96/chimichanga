@@ -628,8 +628,10 @@ router.get('/pay/:carrito/:total', function (req, res) {
         "payment_method": "paypal"
       },
       "redirect_urls": {
-        "return_url": "http://localhost:3000/successPage",
-        "cancel_url": "http://localhost:3000/panelUsuario"
+        "return_url": "https://electtroshop.herokuapp.com/successPage",
+        "cancel_url": "https://electtroshop.herokuapp.com/panelUsuario"
+        //"return_url": "http://localhost:3000/successPage",
+        //"cancel_url": "http://localhost:3000/panelUsuario"
       },
       "transactions": [{
         "item_list": {
