@@ -56,12 +56,18 @@
                                             <h4 class="product-price">$
                                                 <%= documentos[i].precio %>
                                             </h4>
-                                            <p class="buttons">
-                                                <a href="/detalleProducto/<%= documentos[i].ID %>" class="btn btn-default">Ver Detalles</a>
-                                                <% if ( documentos[i].existencia > 0 ) { %>
-                                                    <a href="/AgregarAlCarro/<%= documentos[i].ID %>" class="btn btn-primary">
-                                                        <i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
-                                                    <% } %>
+                                            <p class="col-md-12">
+                                                <div class="col-md-6 col-xls-3">
+                                                    <a href="/detalleProducto/<%= documentos[i].ID %>" class="btn btn-default text-center" style="border-radius: 100%;width: 50px;height: 50px;color: lightgray;font-size:x-large">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6 col-xls-3">
+                                                    <% if ( documentos[i].existencia > 0 ) { %>
+                                                        <a href="/AgregarAlCarro/<%= documentos[i].ID %>" class="btn btn-info text-center" style="border-radius: 100%;width: 50px;height: 50px;color: rgb(255, 255, 255);font-size:x-large">
+                                                            <i class="fa fa-cart-plus"></i></a>
+                                                        <% } %>
+                                                </div>
                                             </p>
                                         </div>
                                     </div>
