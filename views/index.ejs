@@ -120,10 +120,22 @@
                                         <div class="product-body">
                                             <p class="product-category">Vendidos :
                                                 <%= documentos[i].vendidos %> u</p>
-                                            <h3 class="product-name">
+                                            <h3 class="product-name"> Título:
                                                 <%= documentos[i].titulo %>
                                             </h3>
-                                            <h4 class="product-price">$
+                                            <h3 class="product-name"> Descripción:
+                                                <%= documentos[i].descripcion %>
+                                            </h3>
+                                            <h3 class="product-name"> Disponibles:
+                                                <%= documentos[i].existencia %>
+                                            </h3>
+                                            <h3 class="product-name"> Autor:
+                                                <%= documentos[i].autor %>
+                                            </h3>
+                                            <h3 class="product-name"> Tecnología:
+                                                <%= documentos[i].tecnologia %>
+                                            </h3>
+                                            <h4 class="product-price">Precio: $
                                                 <%= documentos[i].precio %>
                                                     <!--<del class="product-old-price">$<%= documentos[i].precio %></del>-->
                                             </h4>
