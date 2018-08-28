@@ -30,6 +30,24 @@
                     return false;
                 }
 
+
+                var b = document.forms["formulario"]["nombre"].value;
+                if (b == "") {
+                    alert("Ingresa un Nombre");
+                    return false;
+                }
+
+                var b = document.forms["formulario"]["apellidos"].value;
+                if (b == "") {
+                    alert("Ingrese Apelliodos");
+                    return false;
+                }
+
+                var b = document.forms["formulario"]["email"].value;
+                if (b == "") {
+                    alert("Ingresa un Correo Electronico");
+                    return false;
+                }
             }
         </script>
 </head>
@@ -41,25 +59,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-12">
-                        <div class="modal-dialog" style="margin-bottom:0">
+                        <div class="modal-dialog" style="margin-bottom:0;">
                             <div class="modal-content">
                                 <div class="panel-heading text-center" style="padding-top: 5%; padding-bottom: 5%">
-                                    <h5 class="panel-title" style="font-size: 30px;color: darkgrey">Login</h5>
+                                    <h5 class="panel-title" style="font-size: 30px;color: darkgrey">Singup</h5>
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group text-center" style="padding-top: 5%; padding-bottom: 10%">
                                         <img src="http://drive.google.com/uc?export=view&id=1QLy3J7_wBWth0Qa5UJWsUvwrcly2CQ1y" width="150" alt="" class="response-image">
                                     </div>
-                                    <form action="/login" method="POST" onsubmit="return validateForm()" name="formulario" style="margin-left: 25%; margin-right: 25%">
+                                    <form action="/singupUs" method="POST" onsubmit="return validateForm()" name="formulario" style="margin-left: 15%; margin-right: 15%">
+                                        <div class="form-group">
+                                            <input name="nombre" id="nombre" type="text" placeholder="Nombre" class="form-control form-control-line" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="apellidos" id="apellidos" type="text" placeholder="Apellidos" class="form-control form-control-line" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="email" id="email" type="email" placeholder="Correo Electrónico" class="form-control form-control-line" autocomplete="off">
+                                        </div>
                                         <div class="form-group">
                                             <input id="username" name="username" class="form-control" placeholder="Usuario" type="text" autofocus="" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <input id="password" name="password" class="form-control" placeholder="Contraseña" type="password">
+                                            <input id="pass" name="pass" class="form-control" placeholder="Contraseña" type="password">
                                         </div>
                                         <div class="form-group text-center" style="padding-top: 5%; padding-bottom: 5%">
                                             <button type="submit" class="btn btn-sm btn-success">
-                                                <i class="fa fa-sign-in"></i> Login</button>
+                                                <i class="fa fa-sign-in"></i> Registrar</button>
                                             <a href="/">
                                                 <button type="button" class="btn btn-sm btn-danger">
                                                     <i class="fa fa-sign-in"></i> Cancelar</button>
@@ -68,8 +95,8 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/sing" class="btn btn-link">
-                                    <i class="fa fa-sign-up"></i>Registrarse<button>
+                                    <a href="/login" class="btn btn-link">
+                                        <i class="fa fa-sign-up"></i> Login</button>
                                     </a>
                                 </div>
                             </div>

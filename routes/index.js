@@ -752,5 +752,52 @@ router.get('/successPage', function (req, res) {
 });
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+// Registro de Usuario <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+router.get('/sing', function (req, res, next) {
+  res.render('singup', { title: 'Singup' });
+});
+router.post('/singupUs', function (req, res, next) {
+  db.query("SELECT ID, username, pass, usertype FROM user WHERE username = '" + req.body.username + "' AND pass = '" + req.body.password + "'", function (err, resultados) {
+    if (err) throw err;
+    if (resultados[0]) {
+
+    }
+    else {
+      var userC = {
+        nombre: req.body.nombre,
+        apellidos: req.body.apellidos,
+        username: req.body.username,
+        email: req.body.email,
+        pass: req.body.pass,
+        usertype: 2
+      }
+      db.query("INSERT INTO user SET ?", userC, function (err, resultados) {
+       console.log(userC); 
+      });
+      db.query("SELECT ID, username, pass, usertype FROM user WHERE username = '" + req.body.username + "' AND pass = '" + req.body.password + "'", function (err, resultados) {
+        if (err) throw err;
+        if (resultados[0]) {
+          switch (resultados[0].usertype) {
+            case 1:
+              req.session.usertype = 1;
+              res.redirect('/panelProductos');
+              break;
+            case 2:
+              req.session.usertype = 2;
+              req.session.userid = resultados[0].ID;
+              res.redirect('/panelUsuario');
+              break;
+            default:
+              res.redirect('/login');
+          }
+        }
+        else {
+          res.redirect('/login');
+        }
+      });
+    }
+  });
+});
+// End Registro de Usuario <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 module.exports = router;
